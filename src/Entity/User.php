@@ -144,6 +144,11 @@ class User implements UserInterface
         return $this->roles;
     }
 
+    public function setRoles($roles)
+    {
+        $this->roles = [$roles];
+    }
+
     public function eraseCredentials()
     {
     }
