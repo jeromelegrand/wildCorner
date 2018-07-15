@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <h1>Enregistrement d'un nouvel utilisateur</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.roles) }}
+        <input type="submit" class="btn btn-primary" value="Créer utilisateur">
+    {{ form_end(form) }}
+{% endblock %}
