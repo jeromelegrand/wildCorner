@@ -18,8 +18,14 @@ security:
             security: false
         main:
             anonymous: true
-            http_basic: ~
+            form_login:
+                login_path: login
+                check_path: login
             provider: main_provider
+            logout:
+                path:   /logout
+                invalidate_session: true
+                target: /admin
 
             # activate different ways to authenticate
 
