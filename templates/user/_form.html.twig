@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {% if app.request.attributes.get('_route') == 'user_edit' %}
+        <fieldset class="form-group">
+            <legend class="col-form-label required">Roles</legend>
+            <div id="user_roles">
+                <div class="form-check">
+                    <input type="radio" id="user_roles_0" name="user[roles]" required="required"
+                           class="form-check-input"
+                           value="ROLE_SUPER_ADMIN" {% if user.roles.0 == 'ROLE_SUPER_ADMIN' %}checked{% endif %} />
+                    <label class="form-check-label required" for="user_roles_0">Root</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="user_roles_1" name="user[roles]" required="required"
+                           class="form-check-input"
+                           value="ROLE_ADMIN" {% if user.roles.0 == 'ROLE_ADMIN' %}checked{% endif %} />
+                    <label class="form-check-label required" for="user_roles_1">Admin</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="user_roles_2" name="user[roles]"
+                           required="required" class="form-check-input"
+                           value="ROLE_USER" {% if user.roles.0 == 'ROLE_USER' %}checked{% endif %} />
+                    <label class="form-check-label required" for="user_roles_2">User</label>
+                </div>
+            </div>
+        </fieldset>
+    {% endif %}
+
+
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
