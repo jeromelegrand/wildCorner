@@ -23,7 +23,11 @@ class AdvertController extends Controller
      */
     public function index(AdvertRepository $advertRepository): Response
     {
-        return $this->render('advert/index.html.twig', ['adverts' => $advertRepository->findAll()]);
+        $adverts = $advertRepository->findBy([], [
+            'updatedAt' => 'DESC'
+        ]);
+
+        return $this->render('advert/index.html.twig', ['adverts' => $adverts]);
     }
 
     /**

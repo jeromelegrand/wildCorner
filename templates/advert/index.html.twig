@@ -12,6 +12,7 @@
                 <th>Title</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>LastUpdate</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{ advert.title }}</td>
                 <td>{{ advert.price }}</td>
                 <td>{{ advert.description }}</td>
+                <td>{{ advert.updatedAt|date('d-m-y à H:m:s') }}</td>
                 <td>
                     <a href="{{ path('advert_show', {'id': advert.id}) }}">show</a>
                     <a href="{{ path('advert_edit', {'id': advert.id}) }}">edit</a>
