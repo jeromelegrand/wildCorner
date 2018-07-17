@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/advert")
+ *
  */
 class AdvertController extends Controller
 {
@@ -33,7 +33,7 @@ class AdvertController extends Controller
     /**
      * @Security("is_granted('IS_AUTHENTICATED_REMEMBERED')")
      * @Security("has_role('ROLE_USER')")
-     * @Route("/new", name="advert_new", methods="GET|POST")
+     * @Route("/advert/new", name="advert_new", methods="GET|POST")
      * @param Request $request
      * @return Response
      */
@@ -61,7 +61,9 @@ class AdvertController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="advert_show", methods="GET")
+     * @Route("/advert/{id}", name="advert_show", methods="GET")
+     * @param Advert $advert
+     * @return Response
      */
     public function show(Advert $advert): Response
     {
@@ -69,7 +71,10 @@ class AdvertController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="advert_edit", methods="GET|POST")
+     * @Route("/advert/{id}/edit", name="advert_edit", methods="GET|POST")
+     * @param Request $request
+     * @param Advert $advert
+     * @return Response
      */
     public function edit(Request $request, Advert $advert): Response
     {
@@ -89,7 +94,10 @@ class AdvertController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="advert_delete", methods="DELETE")
+     * @Route("/advert/{id}", name="advert_delete", methods="DELETE")
+     * @param Request $request
+     * @param Advert $advert
+     * @return Response
      */
     public function delete(Request $request, Advert $advert): Response
     {
