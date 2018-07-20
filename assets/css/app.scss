@@ -13,25 +13,56 @@ h1, h2, h3 {
 
 .layout {
   display: grid;
-  grid-template-columns: 300px auto;
-  grid-template-rows: 100px calc(100vh - 100px);
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 100px minmax(calc(100vh - 100px - 10px), 1fr);
+  grid-gap: 10px;
+  grid-template-areas: '. header' 'sidebar body';
   background-color: $background-dark;
   color: $color;
 }
 
 .header {
-  grid-column: 2;
-  grid-row: 1;
-  place-self: center start;
+  grid-area: header;
+
+  align-self: center;
+  justify-self: start;
 }
 
 .sidebar {
-  grid-column: 1 / span 1;
-  grid-row: 2 / last-line;
+  grid-area: sidebar;
 }
 
 .body {
-  grid-column: 2;
-  grid-row: 2;
+  grid-area: body;
   background-color: $background-body;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  //grid-template-rows: minmax(200px, auto);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+
+  @media screen and (max-width: 749px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (max-width: 1112px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  border: unset;
+  border-radius: 0;
+  //width: 100%;
+  //min-width: 200px;
+  align-self: start;
+}
+
+.card-img-top {
+  border-radius: 0;
+}
+
+.card-body {
+  background-color: $background-dark;
 }

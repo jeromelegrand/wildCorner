@@ -19,6 +19,10 @@ Encore
 
     // uncomment for legacy applications that require $/jQuery as a global variable
     .autoProvidejQuery()
+
+    .configureFilenames({
+        images: '[path][name].[hash:8].[ext]',
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
