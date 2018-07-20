@@ -1,34 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Advert{% endblock %}
+{% block title %}{{ parent() }} - {{ advert.title }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/advert-show.css') }}" />
+{% endblock %}
+
+{% block header %}<h1>{{ advert.title }}</h1>{% endblock %}
 
 {% block body %}
-    <h1>Advert</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ advert.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ advert.title }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ advert.price }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ advert.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('advert_index') }}">back to list</a>
-
-    <a href="{{ path('advert_edit', {'id': advert.id}) }}">edit</a>
-
-    {{ include('advert/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,0 +1,36 @@
+@import 'app';
+
+.body-list-adverts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: min-content;
+  grid-gap: 10px;
+
+  >  div {
+    align-self: start;
+  }
+
+  @media screen and (max-width: 749px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 1112px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border: unset;
+  border-radius: 0;
+  //width: 100%;
+  //min-width: 200px;
+  align-self: start;
+}
+
+.card-img-top {
+  border-radius: 0;
+}
+
+.card-body {
+  background-color: $background-dark;
+}

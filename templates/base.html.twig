@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}Wild Corner{% endblock %}</title>
 
-        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        {% endblock %}
     </head>
     <body>
         {% block layout %}{% endblock %}
