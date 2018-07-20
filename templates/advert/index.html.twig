@@ -1,41 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Advert index{% endblock %}
 
 {% block body %}
-    <h1>Advert index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>LastUpdate</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for advert in adverts %}
-            <tr>
-                <td>{{ advert.id }}</td>
-                <td>{{ advert.title }}</td>
-                <td>{{ advert.price }}</td>
-                <td>{{ advert.description }}</td>
-                <td>{{ advert.updatedAt|date('d-m-y à H:m:s') }}</td>
-                <td>
-                    <a href="{{ path('advert_show', {'id': advert.id}) }}">show</a>
-                    <a href="{{ path('advert_edit', {'id': advert.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('advert_new') }}">Create new</a>
+    {% for advert in adverts %}
+        <div>
+            <article class="card">
+                {% if vich_uploader_asset(advert, 'imageFile') %}
+                    <img class="card-img-top" src="{{ vich_uploader_asset(advert, 'imageFile') }}" alt="{{ advert.imageName }}">
+                {% else %}
+                    <img class="card-img-top" src="{{ asset('build/assets/images/default.jpg') }}" alt="image par défaut">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="{{ path('advert_show', {'id': advert.id}) }}">
+                            {{ advert.title }}
+                        </a>
+                    </h5>
+                    <p class="card-text text-center">
+                        {% if advert.description|length > 100 %}
+                            {{ advert.description[:100] }} ...
+                        {% else %}
+                            {{ advert.description }}
+                        {% endif %}
+                    </p>
+                </div>
+            </article>
+        </div>
+    {% endfor %}
 {% endblock %}
