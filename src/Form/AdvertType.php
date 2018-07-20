@@ -20,7 +20,7 @@ class AdvertType extends AbstractType
             ->add('price', MoneyType::class)
             ->add('description', TextareaType::class)
             ->add('imageFile', VichFileType::class, [
-
+                'required' => false
             ])
         ;
     }
