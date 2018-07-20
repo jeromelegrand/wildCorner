@@ -29,16 +29,51 @@ h1, h2, h3, a, a:hover {
 
   align-self: center;
   justify-self: start;
+  margin-left: 50px;
 }
 
 .sidebar {
   grid-area: sidebar;
-  position: relative;
-  top: 0;
+  margin: 50px;
 }
 
 .body {
   grid-area: body;
   background-color: $background-body;
 
+}
+
+@media screen and (max-width: 749px) {
+  .layout {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 50px 150px 1fr;
+    grid-template-areas:
+            "sidebar"
+            "header"
+            "body"
+    ;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1112px) {
+  .layout {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 50px 150px 1fr;
+    grid-template-areas:
+            "sidebar"
+            "header"
+            "body"
+    ;
+  }
+}
+
+@media screen and (max-width: 1112px) {
+  .header, .sidebar {
+    margin: 20px 0;
+    justify-self: center;
+  }
+  
+  .sidebar > h2 {
+    text-align: center;
+  }
 }
