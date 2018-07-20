@@ -12,19 +12,7 @@
         </main>
         <div class="sidebar">
             {% block sidebar %}
-                <h2>Wild Corner</h2>
-                <form method="GET">
-                    <select>
-                        <option>Catégorie 1</option>
-                        <option>Catégorie 2</option>
-                        <option>Catégorie 3</option>
-                    </select>
-                    <input type="text" placeholder="Votre recherche ..." />
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="fas fa-search"></i>
-                        <span class="sr-only">Rechercher</span>
-                    </button>
-                </form>
+                {% include '_sidebar.html.twig' %}
             {% endblock %}
         </div>
     </div>

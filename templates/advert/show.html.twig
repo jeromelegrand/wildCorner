@@ -6,8 +6,42 @@
     <link rel="stylesheet" href="{{ asset('build/css/advert-show.css') }}" />
 {% endblock %}
 
-{% block header %}<h1>{{ advert.title }}</h1>{% endblock %}
+{% block header %}<h1>Description de l'annonce</h1>{% endblock %}
 
 {% block body %}
-
+    <article class="advert">
+        <div class="title">
+            <h1>{{ advert.title }}</h1>
+        </div>
+        <div class="image">
+            {% if vich_uploader_asset(advert, 'imageFile') %}
+                <img class="img-fluid" src="{{ vich_uploader_asset(advert, 'imageFile') }}" alt="{{ advert.imageName }}">
+            {% else %}
+                <img class="img-fluid" src="{{ asset('build/assets/images/default.jpg') }}" alt="image par défaut">
+            {% endif %}
+        </div>
+        <div class="price">
+            <h2>Prix : {{ advert.price }}€</h2>
+        </div>
+        <div class="infos">
+            <h3>Informations</h3>
+            <ul>
+                <li>Créée le : {{ advert.createdAt|date('d-m-Y') }}</li>
+                <li>Modifiée le : {{ advert.updatedAt|date('d-m-Y') }}</li>
+                <li>Par : {{ advert.owner.username }}</li>
+            </ul>
+        </div>
+        <div class="description">
+            <h3>Description</h3>
+            <p>{{ advert.description }}</p>
+        </div>
+        <div class="button">
+            <a class="btn btn-outline-warning" role="button" href="{{ path('advert_index') }}">Accueil</a>
+            {% if app.user.username is defined and app.user.username == advert.owner.username  %}
+                <a class="btn btn-outline-info" role="button" href="{{ path('advert_edit', {'id': advert.id}) }}">
+                    Edit
+                </a>
+            {% endif %}
+        </div>
+    </article>
 {% endblock %}
