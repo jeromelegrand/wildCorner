@@ -2,30 +2,36 @@
 
 {% block title %}Advert index{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/advert-list.css') }}" />
+{% endblock %}
+
 {% block body %}
-    {% for advert in adverts %}
-        <div>
-            <article class="card">
-                {% if vich_uploader_asset(advert, 'imageFile') %}
-                    <img class="card-img-top" src="{{ vich_uploader_asset(advert, 'imageFile') }}" alt="{{ advert.imageName }}">
-                {% else %}
-                    <img class="card-img-top" src="{{ asset('build/assets/images/default.jpg') }}" alt="image par défaut">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        <a href="{{ path('advert_show', {'id': advert.id}) }}">
-                            {{ advert.title }}
-                        </a>
-                    </h5>
-                    <p class="card-text text-center">
-                        {% if advert.description|length > 100 %}
-                            {{ advert.description[:100] }} ...
-                        {% else %}
-                            {{ advert.description }}
-                        {% endif %}
-                    </p>
-                </div>
-            </article>
-        </div>
-    {% endfor %}
+    <div class="body-list-adverts">
+        {% for advert in adverts %}
+            <div>
+                <article class="card">
+                    {% if vich_uploader_asset(advert, 'imageFile') %}
+                        <img class="card-img-top" src="{{ vich_uploader_asset(advert, 'imageFile') }}" alt="{{ advert.imageName }}">
+                    {% else %}
+                        <img class="card-img-top" src="{{ asset('build/assets/images/default.jpg') }}" alt="image par défaut">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="{{ path('advert_show', {'id': advert.id}) }}">
+                                {{ advert.title }}
+                            </a>
+                        </h5>
+                        <p class="card-text text-center">
+                            {% if advert.description|length > 100 %}
+                                {{ advert.description[:100] }} ...
+                            {% else %}
+                                {{ advert.description }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

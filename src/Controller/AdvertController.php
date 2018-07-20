@@ -72,6 +72,8 @@ class AdvertController extends Controller
 
     /**
      * @Route("/advert/{id}/edit", name="advert_edit", methods="GET|POST")
+     * @Security("has_role('ROLE_USER')")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param Advert $advert
      * @return Response

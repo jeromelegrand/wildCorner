@@ -2,30 +2,18 @@
 
 {% block layout %}
     <div class="layout">
-        <div class="header ml-5">
+        <div class="header">
             {% block header %}
                 <h1>Les Annonces</h1>
             {% endblock %}
         </div>
-        <div class="sidebar mt-5 ml-5">
-            {% block sidebar %}
-                <h2>Wild Corner</h2>
-                <form method="GET"></form>
-                <select>
-                    <option>Catégorie 1</option>
-                    <option>Catégorie 2</option>
-                    <option>Catégorie 3</option>
-                </select>
-                <input type="text" placeholder="Votre recherche ..." />
-                <button class="btn btn-outline-light" type="submit">
-                    <i class="fas fa-search"></i>
-                    <span class="sr-only">Rechercher</span>
-                </button>
-                </form>
-            {% endblock %}
-        </div>
-        <div class="body p-2">
+        <main class="body p-2">
             {% block body %}{% endblock %}
+        </main>
+        <div class="sidebar">
+            {% block sidebar %}
+                {% include '_sidebar.html.twig' %}
+            {% endblock %}
         </div>
     </div>
 {% endblock %}
