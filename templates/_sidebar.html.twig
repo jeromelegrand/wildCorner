@@ -1,13 +1,18 @@
 <a href="{{ path('advert_index') }}"><h1>Wild Corner</h1></a>
 <form method="GET">
-    <select>
-        <option>Catégorie 1</option>
-        <option>Catégorie 2</option>
-        <option>Catégorie 3</option>
-    </select>
-    <input type="text" placeholder="Votre recherche ..." />
-    <button class="btn btn-outline-light" type="submit">
-        <i class="fas fa-search"></i>
-        <span class="sr-only">Rechercher</span>
-    </button>
+    <div class="d-flex flex-column justify-content-around">
+        <div class="form-group">
+            <input type="text" placeholder="Votre recherche ..." />
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-warning" type="submit">
+                <i class="fas fa-search"></i>
+                <span class="sr-only">Rechercher</span>
+            </button>
+        </div>
+    </div>
 </form>
+{% if app.user.username is defined %}
+    <a class="btn btn-outline-warning" href="{{ path('advert_new') }}">Ajouter une annonce</a>
+{% endif %}

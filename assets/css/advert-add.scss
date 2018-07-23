@@ -1,0 +1,48 @@
+@import 'app';
+
+.advert {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+    "title price"
+    "image infos"
+    "description description"
+    "button button"
+  ;
+
+  .title {
+    grid-area: title;
+  }
+
+  .price {
+    grid-area: price;
+  }
+
+  .image {
+    grid-area: image;
+  }
+
+  .infos {
+    grid-area: infos;
+  }
+
+  .description {
+    grid-area: description;
+  }
+
+  .button {
+    grid-area: button;
+  }
+
+  @media screen and  (max-width: 1112px) {
+    grid-template-areas:
+      "title price"
+      "image image"
+      "description description"
+      "infos infos"
+      "button button"
+  ;
+  }
+}

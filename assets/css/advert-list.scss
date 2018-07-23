@@ -3,19 +3,26 @@
 .body-list-adverts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: min-content;
+  grid-auto-rows: 350px;
   grid-gap: 10px;
 
   >  div {
     align-self: start;
+    height: 100%;
   }
 
   @media screen and (max-width: 749px) {
     grid-template-columns: repeat(1, 1fr);
+
+    > div {
+      justify-self: center;
+    }
   }
 
   @media screen and (min-width: 750px) and (max-width: 1112px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 420px;
+
   }
 }
 
@@ -23,6 +30,15 @@
   border: unset;
   border-radius: 0;
   align-self: start;
+  height: 350px;
+
+  @media screen and (max-width: 749px) {
+    max-width: 360px;
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 1112px) {
+    min-height: 100%;
+  }
 }
 
 .card-img-top {
